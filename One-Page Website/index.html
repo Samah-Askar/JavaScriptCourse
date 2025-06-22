@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My One-Page Site</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+      background: #fdf6f0;
+    }
+    nav {
+      background-color: #ff6f61;
+      padding: 1em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      margin: 0 1em;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 60px 20px;
+    }
+    .home {
+      background-color: #ffe0ac;
+      text-align: center;
+    }
+    .gallery {
+      background-color: #d0f4de;
+      text-align: center;
+    }
+    .gallery img {
+      width: 200px;
+      height: auto;
+      margin: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .videos {
+      background-color: #cce7ff;
+      text-align: center;
+    }
+    .videos iframe {
+      width: 80%;
+      height: 315px;
+      max-width: 560px;
+      border: none;
+    }
+    .contact {
+      background-color: #ffb3c1;
+    }
+    .contact form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .contact input, .contact textarea {
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #999;
+      border-radius: 5px;
+    }
+    .contact button {
+      padding: 10px;
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    footer {
+      background-color: #444;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Lightbox styles */
+    #lightboxModal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.8);
+      align-items: center;
+      justify-content: center;
+    }
+    #lightboxModal.active {
+      display: flex;
+    }
+    #lightboxModal img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.4);
+    }
+    #lightboxClose,
+    #lightboxPrev,
+    #lightboxNext {
+      position: absolute;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+      user-select: none;
+      padding: 10px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+    #lightboxClose:hover,
+    #lightboxPrev:hover,
+    #lightboxNext:hover {
+      background: rgba(255,255,255,0.7);
+      color: black;
+    }
+    #lightboxClose {
+      top: 20px;
+      right: 20px;
+    }
+    #lightboxPrev {
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    #lightboxNext {
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation with bookmarks -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#videos">Videos</a>
+    <a href="#contact">Contact</a>
+    <a href="#footer">Footer</a>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home" class="home">
+    <h1>Welcome to My Colorful Website</h1>
+    <p>This is a simple one-page site made with HTML and CSS. Enjoy the colors!</p>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery">
+    <h2>Picture Gallery</h2>
+    <img src="https://cdn.pixabay.com/photo/2018/02/01/19/21/easter-3123834_1280.jpg" alt="Sample Image 1" />
+    <img src="https://cdn.pixabay.com/photo/2018/02/01/19/21/easter-3123834_1280.jpg" alt="Sample Image 2" />
+    <img src="https://cdn.pixabay.com/photo/2018/02/01/19/21/easter-3123834_1280.jpg" alt="Sample Image 3" />
+  </section>
+
+  <!-- Video Section -->
+  <section id="videos" class="videos">
+    <h2>Watch This!</h2>
+    <iframe width="914" height="514" src="https://www.youtube.com/embed/PKtnafFtfEo" title="Youtube Rewind 2020, Thank God It's Over" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </section>
+
+  <!-- Contact Form -->
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <p>&copy; 2025 Samah Askar's Colorful Website. All rights reserved.</p>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightboxModal">
+    <span id="lightboxClose" title="Close">&times;</span>
+    <span id="lightboxPrev" title="Previous">&#10094;</span>
+    <img src="" alt="Expanded image" id="lightboxImage" />
+    <span id="lightboxNext" title="Next">&#10095;</span>
+  </div>
+
+  <script>
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lightboxImage.src = galleryImages[currentIndex].src;
+      lightboxModal.classList.add('active');
+      document.body.style.overflow = 'hidden'; // prevent background scroll
+    }
+
+    function closeLightbox() {
+      lightboxModal.classList.remove('active');
+      document.body.style.overflow = ''; // restore scroll
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      lightboxImage.src = galleryImages[currentIndex].src;
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      lightboxImage.src = galleryImages[currentIndex].src;
+    }
+
+    galleryImages.forEach((img, index) => {
+      img.addEventListener('click', () => openLightbox(index));
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', showPrev);
+    lightboxNext.addEventListener('click', showNext);
+
+    // Close lightbox when clicking outside the image
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) {
+        closeLightbox();
+      }
+    });
+
+    // Keyboard controls: ESC to close, arrows to navigate
+    document.addEventListener('keydown', (e) => {
+      if (!lightboxModal.classList.contains('active')) return;
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        showPrev();
+      } else if (e.key === 'ArrowRight') {
+        showNext();
+      }
+    });
+  </script>
+</body>
+</html>
